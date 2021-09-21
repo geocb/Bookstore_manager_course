@@ -1,5 +1,6 @@
 package com.geovanna.bookstoremanager.controller;
 
+import com.geovanna.bookstoremanager.dto.BookDTO;
 import com.geovanna.bookstoremanager.dto.MessageResponseDTO;
 import com.geovanna.bookstoremanager.entity.Book;
 import com.geovanna.bookstoremanager.repository.BookRepository;
@@ -7,6 +8,7 @@ import com.geovanna.bookstoremanager.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +23,7 @@ public class BookController {
     }
 
     @PostMapping
-    public MessageResponseDTO create(@RequestBody Book book){
-        return bookService.create(book);
+    public MessageResponseDTO create(@RequestBody @Valid BookDTO bookDTO){
+        return bookService.create(bookDTO);
     }
 }
