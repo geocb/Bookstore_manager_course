@@ -3,6 +3,7 @@ package com.geovanna.bookstoremanager.controller;
 import com.geovanna.bookstoremanager.dto.BookDTO;
 import com.geovanna.bookstoremanager.dto.MessageResponseDTO;
 import com.geovanna.bookstoremanager.entity.Book;
+import com.geovanna.bookstoremanager.exception.BookNotFoundException;
 import com.geovanna.bookstoremanager.repository.BookRepository;
 import com.geovanna.bookstoremanager.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public BookDTO findById(@PathVariable Long id) {
+    public BookDTO findById(@PathVariable Long id) throws BookNotFoundException {
         return bookService.findById(id);
     }
 }
